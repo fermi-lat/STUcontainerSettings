@@ -1,0 +1,12 @@
+# -*- python -*-
+# $Header$
+
+Import('baseEnv')
+
+# ScienceTools setup includes Pfiles; not needed for other containers
+baseEnv['usePfiles'] = True
+
+baseEnv.AppendUnique(CPPDEFINES = ['ScienceTools', 'BUILD_WITHOUT_ROOT', 'ST_USER'])
+baseEnv['CONTAINERNAME'] = 'ScienceTools_User'
+if baseEnv['PLATFORM'] == "posix":
+    baseEnv.AppendUnique(CPPDEFINES=['TRAP_FPE'])
